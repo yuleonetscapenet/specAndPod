@@ -12,92 +12,43 @@
 @class AXSSDKFSState;
 @class AXSSDKFSCountry;
 @class AXSSDKFSMPOffer;
-@class AXSSDKFSUser;
-@class AXSSDKFSSiteSkin;
 
 @interface AXSSDKFSMarketPlaceManager : NSObject
 
-
 /**
- If this property is set, all API calls from this manager will use this Flash Seats user instead of AXSSDKFSUserPreference
- */
-@property (nullable, nonatomic, strong) AXSSDKFSUser *flashSeatsUser;
-
-/**
- *  Shared instance of the class to access state, country and site skin lists.
+ *  Shared instance of the class
  *
  *  @return class object
  */
-+ (nonnull AXSSDKFSMarketPlaceManager *)sharedInstance;
++ (AXSSDKFSMarketPlaceManager *)sharedInstance;
 
 /**
- *  List of states. Available after stateListWithCompletionHandler is completed.
+ *  List of states
  *
  *  @return NSArray
  */
-- (nullable NSArray<AXSSDKFSState *> *)stateList;
+- (NSArray<AXSSDKFSState *> *)stateList;
 
 /**
- *  List of countries. Available after countryListWithCompletionHandler is completed.
+ *  List of countries
  *
  *  @return NSArray
  */
-- (nullable NSArray<AXSSDKFSCountry *> *)countryList;
-
-/**
- *  List of site skins. Available after siteSkinListWithCompletionHandler is completed.
- *
- *  @return NSArray
- */
-- (nullable NSArray<AXSSDKFSSiteSkin *> *)siteSkinList;
-
-
-/**
- Init a manager with a region ID
-
- @param regionId region ID
- @return manager
- */
-- (nonnull instancetype)initWithRegionId:(nonnull NSNumber *)regionId;
-
-/**
- Init a manager with a region ID
-
- @param regionIdString region ID
- @return manager
- */
-- (nonnull instancetype)initWithRegionIdString:(nonnull NSString *)regionIdString;
+- (NSArray<AXSSDKFSCountry *> *)countryList;
 
 /**
  *  Update state list from server
  *
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)stateListWithCompletionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
+- (void)stateListWithCompletionHandler:(void(^)(NSError *error, NSDictionary *response))completionHandler;
 
 /**
  *  Update country list from server
  *
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)countryListWithCompletionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
-
-/**
- *  Update site skin list from server
- *
- *  @param completionHandler A completion handler after API request is completed
- */
-- (void)siteSkinListWithCompletionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
-
-/** DEPRECATED. Instead Use - (void)sellerFee:(NSArray *)ticketIds pricePerTicketString:(NSString *)pricePerTicket completionHandler:(void(^)(NSError *error,   NSDictionary * fee))completionHandler;
- *
- *  Calculate seller fee for a listing
- *
- *  @param ticketIds         Array of ticket IDs
- *  @param pricePerTicket    Price per ticket
- *  @param completionHandler A completion handler after API request is completed
- */
-- (void)sellerFee:(nonnull NSArray *)ticketIds pricePerTicket:(nonnull NSNumber *)pricePerTicket completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable fee))completionHandler __deprecated_msg("Use `sellerFee pricePerTicketString` instead");
+- (void)countryListWithCompletionHandler:(void(^)(NSError *error, NSDictionary *response))completionHandler;
 
 /**
  *  Calculate seller fee for a listing
@@ -106,7 +57,7 @@
  *  @param pricePerTicket    Price per ticket
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)sellerFee:(nonnull NSArray *)ticketIds pricePerTicketString:(nonnull NSString *)pricePerTicket completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable fee))completionHandler;
+- (void)sellerFee:(NSArray *)ticketIds pricePerTicket:(NSNumber *)pricePerTicket completionHandler:(void(^)(NSError *error, NSDictionary *fee))completionHandler;
 
 /**
  *  Create a listing
@@ -115,7 +66,7 @@
  *  @param listing           A listing object
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)createOfferListing:(nonnull NSArray *)ticketIds listing:(nonnull AXSSDKFSTicketListing *)listing completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
+- (void)createOfferListing:(NSArray *)ticketIds listing:(AXSSDKFSTicketListing *)listing completionHandler:(void(^)(NSError *error, NSDictionary *response))completionHandler;
 
 /**
  *  Retrat or cancel a listing
@@ -123,28 +74,28 @@
  *  @param listingId         Listing ID
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)retractOfferListing:(nonnull NSString *)listingId completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
+- (void)retractOfferListing:(NSString *)listingId completionHandler:(void(^)(NSError *error, NSDictionary *response))completionHandler;
 
 /**
  *  Get all listings from server
  *
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)offerListingsWithCompletionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
+- (void)offerListingsWithCompletionHandler:(void(^)(NSError *error, NSDictionary *response))completionHandler;
 
 /**
  *  Save listings return from server to CoreData - Private
  *
  *  @param listings Array of listings
  */
-- (void)saveOfferListings:(nonnull NSArray *)listings;
+- (void)saveOfferListings:(NSArray *)listings;
 
 /**
  *  Get offer listings from CoreData - Private
  *
  *  @return NSArray
  */
-- (nullable NSArray<AXSSDKFSMPOffer *> *)offerListings;
+- (NSArray<AXSSDKFSMPOffer *> *)offerListings;
 
 
 /**
@@ -153,7 +104,7 @@
  @param offer offer
  @param completionHandler A completion handler after API request is completed
  */
-- (void)listingsForOffer:(nonnull AXSSDKFSMPOffer *)offer completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
+- (void)listingsForOffer:(AXSSDKFSMPOffer *)offer completionHandler:(void(^)(NSError *error, NSDictionary *response))completionHandler;
 
 /**
  *  Get listings for an event
@@ -161,7 +112,7 @@
  *  @param eventId           Event ID
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)offerListingsForEvent:(nonnull NSString *)eventId completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
+- (void)offerListingsForEvent:(NSString *)eventId completionHandler:(void(^)(NSError *error, NSDictionary *response))completionHandler;
 
 /**
  *  Get tickets for a listing
@@ -169,7 +120,7 @@
  *  @param listingId         Listing ID
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)ticketsForOfferListing:(nonnull NSString *)listingId completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
+- (void)ticketsForOfferListing:(NSString *)listingId completionHandler:(void(^)(NSError *error, NSDictionary *response))completionHandler;
 
 /**
  *  Get the seat map image URL for an event
@@ -177,7 +128,7 @@
  *  @param eventId           Event ID
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)eventSeatMapsUrlByEventId:(nonnull NSString *)eventId completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSString * _Nullable imageUrl))completionHandler;
+- (void)eventSeatMapsUrlByEventId:(NSString *)eventId completionHandler:(void(^)(NSError *error, NSString *imageUrl))completionHandler;
 
 /**
  *  Calculate buyer fee for a purchase
@@ -186,7 +137,7 @@
  *  @param quantity          Number of tickets
  *  @param completionHandler A completion handler after API request is completed
  */
-- (void)buyerFeeForListing:(nonnull NSString *)listingId quantity:(nonnull NSNumber *)quantity completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable fee))completionHandler;
+- (void)buyerFeeForListing:(NSString *)listingId quantity:(NSNumber *)quantity completionHandler:(void(^)(NSError *error, NSDictionary *fee))completionHandler;
 
 /**
  *  Buy an offer listing
@@ -196,6 +147,6 @@
  *  @param settlementMethodId User settlement method ID
  *  @param completionHandler  A completion handler after API request is completed
  */
-- (void)buyOfferListing:(nonnull NSString *)listingId quantity:(nonnull NSNumber *)quantity settlementMethodId:(nonnull NSNumber *)settlementMethodId completionHandler:(void(^ _Nullable)(NSError * _Nullable error, NSDictionary * _Nullable response))completionHandler;
+- (void)buyOfferListing:(NSString *)listingId quantity:(NSNumber *)quantity settlementMethodId:(NSNumber *)settlementMethodId completionHandler:(void(^)(NSError *error, NSDictionary *response))completionHandler;
 
 @end

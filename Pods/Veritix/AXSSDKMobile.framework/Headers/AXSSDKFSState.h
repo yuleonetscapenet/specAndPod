@@ -10,10 +10,10 @@
 
 @interface AXSSDKFSState : AXSSDKModel <AXSJsonEncodableModel>
 
-@property (nullable, nonatomic, strong) NSString *abbreviation;
-@property (nullable, nonatomic, strong) NSNumber *countryId;
-@property (nullable, nonatomic, strong) NSString *name;
-@property (nullable, nonatomic, strong) NSNumber *stateId;
+@property (nonatomic, strong) NSString *abbreviation;
+@property (nonatomic, strong) NSNumber *countryId;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSNumber *stateId;
 
 
 @end
