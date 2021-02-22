@@ -17,7 +17,7 @@
 /**
  *  The NSURLSession used by this client.
  */
-@property (nullable, nonatomic, strong) NSURLSession* session;
+@property (nonatomic, strong) NSURLSession* session;
 
 /**
  *  The API platform to use for requests created by this client. Note, this only applies to request objects CREATED by this client. If you pass in a pre-made request object, the API platform you've already specified won't be overridden.
@@ -36,16 +36,7 @@
  *  @param httpMethod       The HTTP method to use.
  *  @param completionBlock A completion block that returns request error and the decoded JSON, either an NSString, NSDictionary or an NSArray.
  */
-- (void)request:(nonnull AXSSDKHttpClientRequest *)request httpMethod:(nonnull NSString *)httpMethod completionBlock:(nullable void (^)(NSError * _Nullable error, id _Nullable response))completionBlock;
-
-/**
- *  Make a request to the AXS APIs with response Header information
- *
- *  @param request    The descriptor for the request.
- *  @param httpMethod       The HTTP method to use.
- *  @param completionBlock A completion block that returns request error and the decoded JSON, either an NSString, NSDictionary or an NSArray.
- */
-- (void)request:(nonnull AXSSDKHttpClientRequest*)request httpMethod:(nonnull NSString *)httpMethod completionBlockWithHeader:(nullable void (^)(NSError * _Nullable error, id _Nullable response, NSDictionary * _Nullable responseHeader))completionBlock;
+- (void)request:(AXSSDKHttpClientRequest*)request httpMethod:(NSString *)httpMethod completionBlock:(void (^)(NSError *error, id response))completionBlock;
 
 /**
  *  Convert an AXSHttpClientRequest into an NSURLRequest.
@@ -55,6 +46,6 @@
  *
  *  @return The fully-composed NSURLRequest, ready to queue in an existing NSURLSession.
  */
-- (nonnull NSURLRequest*)urlRequestForRequest:(nonnull AXSSDKHttpClientRequest*)request httpMethod:(nonnull NSString *)httpMethod;
+- (NSURLRequest*)urlRequestForRequest:(AXSSDKHttpClientRequest*)request httpMethod:(NSString *)httpMethod;
 
 @end

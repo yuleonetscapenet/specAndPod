@@ -11,12 +11,11 @@
 
 #import "AXSSDKFSMPOffer.h"
 
-@class AXSSDKFSEvent;
+NS_ASSUME_NONNULL_BEGIN
 
 @interface AXSSDKFSMPOffer (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSNumber *fsSiteSkinId;
-@property (nullable, nonatomic, retain) AXSSDKEvent *axsEvent;
 @property (nullable, nonatomic, retain) AXSSDKFSEvent *event;
 @property (nullable, nonatomic, retain) NSSet<AXSSDKFSTicketListing *> *listings;
 
@@ -24,9 +23,11 @@
 
 @interface AXSSDKFSMPOffer (CoreDataGeneratedAccessors)
 
-- (void)addListingsObject:(nonnull AXSSDKFSTicketListing *)value;
-- (void)removeListingsObject:(nonnull AXSSDKFSTicketListing *)value;
-- (void)addListings:(nonnull NSSet<AXSSDKFSTicketListing *> *)values;
-- (void)removeListings:(nonnull NSSet<AXSSDKFSTicketListing *> *)values;
+- (void)addListingsObject:(AXSSDKFSTicketListing *)value;
+- (void)removeListingsObject:(AXSSDKFSTicketListing *)value;
+- (void)addListings:(NSSet<AXSSDKFSTicketListing *> *)values;
+- (void)removeListings:(NSSet<AXSSDKFSTicketListing *> *)values;
 
 @end
+
+NS_ASSUME_NONNULL_END

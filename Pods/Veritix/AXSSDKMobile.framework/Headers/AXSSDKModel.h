@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+/// A model that can convert between JSON, NSDictionary and class object.
 @protocol AXSJsonEncodableModel <NSObject>
 
 /**
@@ -15,30 +16,23 @@
  *
  *  @return JSON data
  */
-- (nullable NSData*)toJson;
+- (NSData*)toJson;
 
 /**
  *  Convert class model to NSDictionary
  *
  *  @return NSDictionary
  */
-- (nullable NSDictionary*)toDictionary;
+- (NSDictionary*)toDictionary;
 
 /**
  *  Update class model properties with NSDictionary
  *
  *  @param object new values
  */
-- (void)updateWithDictionary:(nonnull NSDictionary *)object;
+- (void)updateWithDictionary:(NSDictionary *)object;
 - (void)reset;
-+ (nullable instancetype)initWithData:(nonnull NSData*)json;
-
-/**
- *  Initialize class model with NSDictionary
- *
- *  @param json new values
- */
-+ (nullable instancetype)initWithJson:(nonnull NSDictionary *)json;
++ (instancetype)initWithJson:(NSData*)json;
 
 /**
  *  Implement this if you don't want certain property to translate to JSON when toDictionary is called.
@@ -47,30 +41,30 @@
  *
  *  @return BOOL
  */
-+ (BOOL)shouldSerializeProperty:(nonnull NSString*)modelPropertyName;
++ (BOOL)shouldSerializeProperty:(NSString*)modelPropertyName;
 
 /**
  *  Implement this for a model property name and JSON property name mapping
  *
  *  @return dictionary
  */
-+ (nullable NSDictionary*)modelToJsonPropertyMappings;
++ (NSDictionary*)modelToJsonPropertyMappings;
 
-+ (nullable NSString*)jsonPropertyNameForModelProperty:(nonnull NSString*)modelPropertyName;
-+ (nullable NSString*)modelPropertyNameForJsonProperty:(nonnull NSString*)jsonPropertyName;
-+ (nullable id)serializedValueForProperty:(nonnull NSString*)propertyName value:(nonnull id)value;
++ (NSString*)jsonPropertyNameForModelProperty:(NSString*)modelPropertyName;
++ (NSString*)modelPropertyNameForJsonProperty:(NSString *)jsonPropertyName;
++ (id)serializedValueForProperty:(NSString*)propertyName value:(id)value;
 
 @end
 
 /**
  *  AXS base model. Adpots AXSJsonEncodableModel protocol.
  */
-@interface AXSSDKModel : NSObject <AXSJsonEncodableModel, NSCoding>
+@interface AXSSDKModel : NSObject <AXSJsonEncodableModel>
 @end
 
 /**
  *  Helper model if we need to serialize an array. Adpots AXSJsonEncodableModel protocol.
  */
 @interface AXSArrayModel : AXSSDKModel <AXSJsonEncodableModel>
-@property (nullable, nonatomic, strong) NSArray* array;
+@property (nonatomic, strong) NSArray* array;
 @end
