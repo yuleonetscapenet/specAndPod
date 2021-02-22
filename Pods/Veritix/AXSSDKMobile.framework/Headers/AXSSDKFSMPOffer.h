@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class AXSSDKEvent;
+@class AXSSDKFSEvent;
 @class AXSSDKFSTicketListing;
 
-
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Represents a FlashSeats marketplace offer
@@ -23,5 +23,6 @@
 
 @end
 
+NS_ASSUME_NONNULL_END
 
 #import "AXSSDKFSMPOffer+CoreDataProperties.h"
