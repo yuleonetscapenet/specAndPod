@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SHVendorPods'
-  s.version          = '0.10.0'
+  s.version          = '0.8.0'
   s.summary          = '3rd party libs without CocoaPods support.'
   s.license          = { :type => 'MIT', :text => <<-LICENSE
   Dummy text to silence license warning :)
