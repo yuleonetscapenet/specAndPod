@@ -7,61 +7,32 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AXSSDKTicketingRegion.h"
 
 @interface AXSSDKConfigs : NSObject
 
 /**
- *  Help Center URL
+ *  Seat upgrades URL
  *
  *  @return URL
  */
-+ (nonnull NSString *)helpCenterURL;
-+ (nonnull NSString *)helpCenterURLForRegionId:(nonnull NSNumber *)regionId;
-+ (nonnull NSString *)invalidEndUserDetectedSupportUrl;
-+ (nonnull NSString *)helpCenterURLForRegion:(AXSSDKTicketingRegion)region;
-+ (nonnull NSString *)aboutAXSURL;
-+ (nonnull NSNumber *)flashSeatsSiteSkinId;
-
-+ (nonnull NSString *)facebookAuthURL;
-+ (nonnull NSString *)blizzardAuthURL;
-+ (nonnull NSString *)blizzardAuthRedirectURL;
-
-+ (nonnull NSString *)hostForAxsCom;
-
-+ (nonnull NSString *)cancelledEventHelpURL;
-+ (nonnull NSString *)postponedEventHelpURL;
-+ (nonnull NSString *)suspendedEventHelpURL;
-+ (nonnull NSString *)rescheduledEventHelpURL;
-
-+ (nonnull NSString *)donationFormURL;
-
-+ (nonnull NSURL *)signInWithAppleURL;
-+ (nonnull NSString *)signInWithAppleRedirectURI;
-+ (nonnull NSString *)signInWithAppleRedirectURI2;
++ (NSString *)seatUpgradesURL;
 
 /**
- * Returns system locale. E.g. en-US, en-UK
+ *  AXS ID URL. User sign in, create account and forget password. After the user is logged in, it will redirect to https://www.axs.com/axs-id-redirect with access_token & refresh_token in query parameters.
+ *
+ *  @return URL
  */
-+ (nonnull NSString *)localeCode;
++ (NSString *)signInURL;
 
 /**
- Returns device locale
- 
- @return US, UK, SE
+ *  AXS user account information and edit URL
+ *
+ *  @return URL
  */
-+ (nonnull NSString *)localeCountryCode;
-+ (BOOL)isLocaleCountryEU;
-+ (BOOL)isLocaleCountryFlashEnabled;
-+ (nonnull NSNumber *)axsApiRegionId;
-+ (nonnull NSString *)axsApiRegionIdString;
++ (NSString *)accountInfoURL;
 
-/**
- Check if a region ID is enabled for sale balance management
++ (NSNumber *)flashSeatsSiteSkinId;
 
- @param regionId region ID
- @return bool
- */
-+ (BOOL)isSaleBalanceEnabledRegion:(nonnull NSNumber *)regionId;
++ (NSString *)facebookAuthURL;
 
 @end

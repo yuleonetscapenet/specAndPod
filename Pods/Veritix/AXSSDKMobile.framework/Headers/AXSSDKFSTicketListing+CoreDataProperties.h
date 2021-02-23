@@ -11,8 +11,7 @@
 
 #import "AXSSDKFSTicketListing.h"
 
-@protocol AXSSDKTicketProtocol;
-@class AXSSDKFSTicket;
+NS_ASSUME_NONNULL_BEGIN
 
 @interface AXSSDKFSTicketListing (CoreDataProperties)
 
@@ -33,7 +32,17 @@
 @property (nullable, nonatomic, retain) NSString *section;
 @property (nullable, nonatomic, retain) NSString *purchasableQuantityList;
 @property (nullable, nonatomic, retain) AXSSDKFSMPOffer *mpOffer;
-@property (nullable, nonatomic, retain) NSSet<AXSSDKTicket *> *axsTickets;
-@property (nullable, nonatomic, retain) NSSet<AXSSDKFSTicket *> *tickets __deprecated_msg("Use `axsTickets` instead");
+@property (nullable, nonatomic, retain) NSSet<AXSSDKFSTicket *> *tickets;
 
 @end
+
+@interface AXSSDKFSTicketListing (CoreDataGeneratedAccessors)
+
+- (void)addTicketsObject:(AXSSDKFSTicket *)value;
+- (void)removeTicketsObject:(AXSSDKFSTicket *)value;
+- (void)addTickets:(NSSet<AXSSDKFSTicket *> *)values;
+- (void)removeTickets:(NSSet<AXSSDKFSTicket *> *)values;
+
+@end
+
+NS_ASSUME_NONNULL_END

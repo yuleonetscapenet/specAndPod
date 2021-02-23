@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class AXSSDKFSMPOffer;
-@class AXSSDKTicket;
+@class AXSSDKFSTicket;
 
 /**
  *  Represents a FlashSeats marketplace listing
@@ -19,8 +21,10 @@
 
 // Insert code here to declare functionality of your managed object subclass
 
-@property (nullable, nonatomic, readonly) NSArray *purchasableQuantity;
+@property (nonatomic, readonly) NSArray *purchasableQuantity;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #import "AXSSDKFSTicketListing+CoreDataProperties.h"

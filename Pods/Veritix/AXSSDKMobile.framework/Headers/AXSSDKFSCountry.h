@@ -10,9 +10,8 @@
 
 @interface AXSSDKFSCountry : AXSSDKModel
 
-@property (nullable, nonatomic, strong) NSString *abbreviation;
-@property (nullable, nonatomic, strong) NSNumber *countryId;
-@property (nullable, nonatomic, strong) NSString *name;
-@property (nullable, nonatomic, strong) NSNumber *hasSubdivisions;
+@property (nonatomic, strong) NSString *abbreviation;
+@property (nonatomic, strong) NSNumber *countryId;
+@property (nonatomic, strong) NSString *name;
 
 @end
